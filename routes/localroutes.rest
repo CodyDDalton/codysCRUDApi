@@ -1,0 +1,28 @@
+GET http://localhost:8000/students
+
+###
+
+GET http://localhost:8000/students/63e805da6c75f0769a288113
+
+###
+
+POST http://localhost:8000/students
+Content-Type: application/json
+
+{
+    "name":"Cody Dalton",
+    "class":"DWA"
+}
+
+###
+
+PATCH http://localhost:8000/students/63e805f76c75f0769a288115
+Content-Type: application/json
+
+{
+    "name":"New Name",
+    "class":"New Class"
+}
+###
+
+DELETE http://localhost:8000/students/63e805da6c75f0769a288113
