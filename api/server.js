@@ -23,7 +23,13 @@ db.once('open', () => {
 })
 
 app.use(express.json())
-app.use('/students', studentRouter)
+app.use('/api/v1/students', studentRouter)
+
+app.use(express.static(path.join(__dirname, '../reactjs/build')))
+
+app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../reactjs/build', 'index.html'))
+});
 
 app.listen(PORT, () => {
     console.log(`Server running on ${PORT}`)
