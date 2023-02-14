@@ -5,9 +5,16 @@ import '../App.css';
 
 function Dashboard() {
 
-  const [students, setStudents] = useState(null)
+  const [students, setStudents] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
+
+  const [values, setValues] = useState({
+    name:'',
+    class:''
+  })
+
+  
 
 
   const API_BASE = process.env.NODE_ENV === 'development' 
@@ -44,6 +51,39 @@ function Dashboard() {
       }
 
     }
+
+    const createStudent = async () => {
+      try{
+      await fetch(`${API_BASE}/students`, {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(values)
+          })
+              .then(() => getStudents())
+
+      } catch (error) {
+          setError(error.message || "Unexpected Error")
+      } finally {
+          setLoading(false)
+      }
+  }
+
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      createStudent();
+  }
+
+  const handleInputChange = (event) => {
+      event.persist();
+      setValues((values) => ({
+          ...values,
+          [event.target.name]: event.target.value
+
+      }))
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -53,11 +93,22 @@ function Dashboard() {
         {
           students.map(student => (
              <li>
-              {student.name}
+              <Link to={`/student/${student._id}`}>{student.name}</Link>
             </li>
           ))
         }
         </ul>
+        <form onSubmit={(event) => handleSubmit(event)}>
+            <label>
+                Name:
+                <input type="text" name="name" value={values.name} onChange={handleInputChange} />
+            </label>
+            <label>
+                Class:
+                <input type="text" name="class" value={values.class} onChange={handleInputChange} />
+            </label>
+            <input type="submit" value="Submit" />
+        </form>
       </header>
     </div>
   );
