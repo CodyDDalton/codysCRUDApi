@@ -40,7 +40,7 @@ function Dashboard() {
         await fetch(`${API_BASE}/movies`)
         .then(res => res.json())
         .then(data => {
-          console.log(data)
+          console.log({data})
           setMovies(data)
         })
 

@@ -6,7 +6,7 @@ const Movie = require('../models/movie')
 const getMovie = async (req, res, next) => {
     let movie
     try {
-        student = await Movie.findById(req.params.id)
+        movie = await Movie.findById(req.params.id)
         if(movie === null){
             return res.status(404).json(({ message:"Movie not found"}))
         }
@@ -39,8 +39,8 @@ router.get('/:id', getMovie, (req, res) => {
 //POST CREATE
 router.post('/', async (req, res) => {
     const movie = new Movie({
-        name: req.body.title,
-        class: req.body.genre,
+        title: req.body.title,
+        genre: req.body.genre,
         released: req.body.released
     })
     try {
@@ -61,6 +61,9 @@ router.patch('/:id', getMovie, async (req, res) => {
     }
     if(req.body.genre != null){
         res.movie.genre = req.body.genre
+    }
+    if(req.body.released != null){
+        res.movie.released = req.body.released
     }
     try{
         const updatedMovie = await res.movie.save()
