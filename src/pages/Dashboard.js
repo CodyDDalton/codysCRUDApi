@@ -40,7 +40,7 @@ function Dashboard() {
         await fetch(`${API_BASE}/movies`)
         .then(res => res.json())
         .then(data => {
-          console.log(data)
+          console.log({data})
           setMovies(data)
         })
 
@@ -87,9 +87,13 @@ function Dashboard() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="App-header" style={styles.header}>
+        <nav>
+          <Link to="/">Home</Link>
+        </nav>
+        <div>
         <h1>Movies</h1>
-        <Link to="/">Home</Link>
+        
         <ul>
         {
           movies.map(movie => (
@@ -114,10 +118,22 @@ function Dashboard() {
             </label>
             <input type="submit" value="Submit" />
         </form>
+        </div>
+        
       </header>
     </div>
   );
 }
 
 export default Dashboard;
+
+const styles = {
+  header:{
+    backgroundColor: '#f60000',
+    opacity: 1,
+    backgroundImage: 'linear-gradient(to right, #ee0000, #ee0000 11.5px, #f60000 11.5px, #f60000 )',
+    backgroundSize: '23px 100%',
+    height:'10%'
+  }
+}
 
