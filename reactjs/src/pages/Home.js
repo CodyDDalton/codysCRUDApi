@@ -6,7 +6,7 @@ function Home() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Student List Homepage</h1>
+        <h1>Movie List Homepage</h1>
         <Link to="/dashboard">Dashboard</Link>
       </header>
     </div>

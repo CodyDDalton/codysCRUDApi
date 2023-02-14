@@ -10,7 +10,7 @@ app.use(cors());
 
 const PORT = process.env.PORT || 8000;
 
-const studentRouter = require('./routes/students')
+const movieRouter = require('./routes/movies')
 
 const DATABASE_URL = process.env.DATABASE_URL;
 
@@ -23,7 +23,7 @@ db.once('open', () => {
 })
 
 app.use(express.json())
-app.use('/api/v1/students', studentRouter)
+app.use('/api/v1/movies', movieRouter)
 
 app.use(express.static(path.join(__dirname, '../reactjs/build')))
 

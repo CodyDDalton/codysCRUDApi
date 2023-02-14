@@ -1,28 +1,30 @@
-GET http://localhost:8000/students
+GET http://localhost:8000/movies
 
 ###
 
-GET http://localhost:8000/students/63e805da6c75f0769a288113
+GET http://localhost:8000/movies/123456
 
 ###
 
-POST http://localhost:8000/api/v1/students
+POST http://localhost:8000/api/v1/movies
 Content-Type: application/json
 
 {
-    "name":"Cody Dalton",
-    "class":"DWA"
+    "title":"Kung Fu Panda",
+    "genre":"Animation",
+    "released":"2008"
 }
 
 ###
 
-PATCH http://localhost:8000/students/63e805f76c75f0769a288115
+PATCH http://localhost:8000/movies/123456
 Content-Type: application/json
 
 {
-    "name":"New Name",
-    "class":"New Class"
+    "title":"Kung Fu Panda",
+    "genre":"Animation",
+    "released":"2007"
 }
 ###
 
-DELETE http://localhost:8000/students/63e805da6c75f0769a288113
+DELETE http://localhost:8000/movies/123456

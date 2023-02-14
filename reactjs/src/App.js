@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Dashboard from './pages/Dashboard';
 import Home from './pages/Home';
-import Student from './pages/Student';
+import Movie from './pages/Movie';
 
 function App() {
     return(
         <Router>
             <Routes>
-                <Route path="/student/:id" element={<Student />} />
+                <Route path="/movie/:id" element={<Movie />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/" exact element={<Home />} />
             </Routes>

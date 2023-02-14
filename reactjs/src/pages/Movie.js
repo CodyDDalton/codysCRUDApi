@@ -2,14 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import '../App.css';
 
-function Student() {
+function Movie() {
 
-  const [students, setStudents] = useState(null)
+  const [movies, setMovies] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
   const [values, setValues] = useState({
-    name:'',
-    class:''
+    title:'',
+    genre:'',
+    released:''
   })
 
 
@@ -24,7 +25,7 @@ function Student() {
     useEffect(() => {
 
       if(!ignore){
-        getStudent()
+        getMovie()
       }
 
       return () => {
@@ -32,16 +33,17 @@ function Student() {
       }
     }, [])
 
-    const getStudent = async (res, req) =>{
+    const getMovie = async (res, req) =>{
       setLoading(true)
       try{
-        await fetch(`${API_BASE}/students/${id}`)
+        await fetch(`${API_BASE}/movies/${id}`)
         .then(res => res.json())
         .then(data => {
           console.log({data})
           setValues({
-            name: data.name,
-            class: data.class
+            title: data.title,
+            genre: data.genre,
+            released: data.released
           })
         })
 
@@ -54,14 +56,14 @@ function Student() {
 
     }
 
-    const deleteStudent = async () => {
+    const deleteMovie = async () => {
         try{
-            await fetch(`${API_BASE}/students/${id}`, {
+            await fetch(`${API_BASE}/movies/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
                 .then(data => {
-                    setStudents(data)
+                    setMovies(data)
                     navigate("/dashboard", { replace: true})
                 })
 
@@ -72,9 +74,9 @@ function Student() {
         }
     }
 
-    const updateStudent = async () => {
+    const updateMovie = async () => {
         try{
-            await fetch(`${API_BASE}/students/${id}`, {
+            await fetch(`${API_BASE}/movies/${id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'
@@ -95,7 +97,7 @@ function Student() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        updateStudent();
+        updateMovie();
     }
 
     const handleInputChange = (event) => {
@@ -110,21 +112,26 @@ function Student() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Student Profile</h1>
-        <h5>{values && values.name}</h5>
-        <p>{values && values.class}</p>
-        <button onClick={() => deleteStudent()}>Delete Student</button>
+        <h1>Movie Listing</h1>
+        <h5>{values && values.title}</h5>
+        <p>{values && values.genre}</p>
+        <p>{values && values.released}</p>
+        <button onClick={() => deleteMovie()}>Delete Movie</button>
         <Link to="/dashboard">Dashboard</Link>
         <Link to="/">Home</Link>
 
         <form onSubmit={(event) => handleSubmit(event)}>
             <label>
-                Name:
-                <input type="text" name="name" value={values.name} onChange={handleInputChange} />
+                Title:
+                <input type="text" name="title" value={values.title} onChange={handleInputChange} />
             </label>
             <label>
-                Class:
-                <input type="text" name="class" value={values.class} onChange={handleInputChange} />
+                Genre:
+                <input type="text" name="genre" value={values.genre} onChange={handleInputChange} />
+            </label>
+            <label>
+                Released:
+                <input type="text" name="released" value={values.released} onChange={handleInputChange} />
             </label>
             <input type="submit" value="Submit" />
         </form>
@@ -133,4 +140,4 @@ function Student() {
   );
 }
 
-export default Student;
+export default Movie;
