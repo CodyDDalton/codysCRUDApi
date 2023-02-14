@@ -1,9 +1,10 @@
 {
-    "name": "apiWithClient",
+    "name": "apiwithclient",
     "version": "1.0.0",
     "engines": {
         "node": "18.14.0"
     },
+    "main":"index.js",
     "scripts": {
         "install-reactjs": "npm install --prefix reactjs",
         "install-api": "npm install --prefix api",
@@ -15,6 +16,12 @@
         "api": "cd api; nodemon server.js"
     },
     "dependencies": {
-        "concurrently": "^7.6.0"
+        "concurrently": "^7.6.0",
+        "cors": "^2.8.5",
+        "mongoose": "^6.9.1",
+        "path": "^0.12.7",
+        "react-dom": "^18.2.0",
+        "react-scripts": "^5.0.1",
+        "web-vitals": "^3.1.1"
     }
 }
