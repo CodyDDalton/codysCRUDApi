@@ -112,32 +112,19 @@ function Movie() {
   return (
     <div className="App">
       <header className="App-header" style={styles.header}>
-        <nav>
-          <Link to="/dashboard">Dashboard</Link>
-          <Link to="/">Home</Link>
-        </nav>
-        <div>
-          <h1>Movie Listing</h1>
-          <h5>{values && values.title}</h5>
-          <p>{values && values.genre}</p>
-          <p>{values && values.released}</p>
-          <button onClick={() => deleteMovie()}>Delete Movie</button>
+        <nav style={styles.nav}>
+        <div style={styles.links}>
+          <Link style={{textDecoration:'none', color:'yellow'}} to="/">Home</Link>
+          <Link style={{textDecoration:'none', color:'yellow'}} to="/dashboard">Dashboard</Link>
           
-          <form onSubmit={(event) => handleSubmit(event)}>
-              <label>
-                  Title:
-                  <input type="text" name="title" value={values.title} onChange={handleInputChange} />
-              </label>
-              <label>
-                  Genre:
-                  <input type="text" name="genre" value={values.genre} onChange={handleInputChange} />
-              </label>
-              <label>
-                  Released:
-                  <input type="text" name="released" value={values.released} onChange={handleInputChange} />
-              </label>
-              <input type="submit" value="Submit" />
-          </form>
+          </div>
+        </nav>
+        <hr style={{width:'33%'}}></hr>
+        <div>
+          <h5>{values && values.title}</h5>
+          <p>Genre: {values && values.genre}</p>
+          <p>Released: {values && values.released}</p>
+          <button onClick={() => deleteMovie()}>Delete Movie</button>
         </div>
       </header>
     </div>
@@ -153,5 +140,13 @@ const styles = {
     backgroundImage: 'linear-gradient(to right, #ee0000, #ee0000 11.5px, #f60000 11.5px, #f60000 )',
     backgroundSize: '23px 100%',
     height:'10%'
+  },
+  nav:{
+    fontSize:34,
+  },
+  links:{
+    display:'flex',
+    flexDirection:'column',
+    justifyContent:'space-evenly',
   }
 }
