@@ -11,6 +11,7 @@ app.use(cors());
 const PORT = process.env.PORT || 8000;
 
 const movieRouter = require('./routes/movies')
+const authRouter = require('./routes/auth')
 
 const DATABASE_URL = process.env.DATABASE_URL;
 
@@ -24,6 +25,7 @@ db.once('open', () => {
 
 app.use(express.json())
 app.use('/api/v1/movies', movieRouter)
+app.use('/api/v1/auth', authRouter)
 
 app.use(express.static(path.join(__dirname, '../reactjs/build')))
 
