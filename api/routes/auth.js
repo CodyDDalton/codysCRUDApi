@@ -7,7 +7,7 @@ const AuthenticationController = require('../controllers/authentication_controll
    
 // })
 
-router.post(AuthenticationController.signup)
+router.post('/', AuthenticationController.signup)
 
 // //GET ONE
 // router.get('/:id', getMovie, (req, res) => {
