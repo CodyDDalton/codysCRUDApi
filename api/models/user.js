@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
         default: Date.now
     }
 })
-userSchema.pre('save', function (next){
+userSchema.pre('save', function (next) {
     const user = this;
     if(user.isNew || user.isModified('password')) {
         bcrypt.genSalt(20, (error, salt) => {
