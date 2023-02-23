@@ -21,12 +21,13 @@ const userSchema = new mongoose.Schema({
         type: Date,
         required:true,
         default: Date.now
-    }
+    },
 })
+
 userSchema.pre('save', function (next) {
     const user = this;
     if(user.isNew || user.isModified('password')) {
-        bcrypt.genSalt(20, (error, salt) => {
+        bcrypt.genSalt(10, (error, salt) => {
             if(error) { return next(error)}
             bcrypt.hash(user.password, salt, null, (error,hash) => {
                 if(error) {return next(error)}

@@ -4,7 +4,7 @@ const config = require('../config')
 
 const tokenForUser = user => {
     const timestamp = new Date().getTime();
-    return jwt.decode.encode({
+    return jwt.encode({
         sub: user.id,
         iat: timestamp
     }, config.secret)
