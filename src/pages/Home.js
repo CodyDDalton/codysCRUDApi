@@ -13,7 +13,8 @@ function Home() {
           <div style={styles.links}>
           <Link id="Link" to="/" style={{textDecoration:'none', color:'yellow'}}>Home</Link>
           <Link to="/dashboard" style={{textDecoration:'none', color:'yellow'}}>Dashboard</Link>
-
+          <Link to="/login" style={{textDecoration:'none', color:'yellow'}}>Log In</Link>
+          <Link to="/signup" style={{textDecoration:'none', color:'yellow'}}>Sign Up</Link>
           </div>
         </nav>
       </header>
