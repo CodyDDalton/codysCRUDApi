@@ -88,35 +88,43 @@ function Dashboard() {
   return (
     <div className="App">
       <header className="App-header" style={styles.header}>
-        <nav>
-          <Link to="/">Home</Link>
+        <nav style={styles.nav}>
+          <Link style={styles.link} to="/">Return to Home</Link>
         </nav>
         <div>
         <h1>Movies</h1>
         
-        <ul>
+        <ul style={{listStyle:'none'}}>
         {
           movies.map(movie => (
-             <li>
-              <Link to={`/movie/${movie._id}`}>{movie.title}</Link>
+             <li style={styles.list}>
+              <Link style={{textDecoration:'none', color:'yellow'}} to={`/movie/${movie._id}`}>{movie.title}</Link>
             </li>
           ))
         }
         </ul>
-        <form onSubmit={(event) => handleSubmit(event)}>
-            <label>
-                Title:
-                <input type="text" name="title" value={values.title} onChange={handleInputChange} />
-            </label>
-            <label>
-                Genre:
-                <input type="text" name="genre" value={values.genre} onChange={handleInputChange} />
-            </label>
-            <label>
-                Released:
-                <input type="text" name="released" value={values.released} onChange={handleInputChange} />
-            </label>
-            <input type="submit" value="Submit" />
+        <form style={styles.form} onSubmit={(event) => handleSubmit(event)}>
+          <div style={styles.entryContainer}>
+            <label for='title'>
+                Title:</label>
+                <input id='title' style={styles.inputs} type="text" name="title" value={values.title} onChange={handleInputChange} />
+            
+          </div>
+            <div style={styles.entryContainer}>
+              <label for='genre'>
+                Genre:</label>
+                <input id='genre' style={styles.inputs} type="text" name="genre" value={values.genre} onChange={handleInputChange} />
+              
+            </div>
+            <div style={styles.entryContainer}>
+              <label for='released'>
+                Released:</label>
+                <input id='released' style={styles.inputs} type="text" name="released" value={values.released} onChange={handleInputChange} />
+              
+
+            </div>
+            
+            <input style={styles.button} type="submit" value="Submit" />
         </form>
         </div>
         
@@ -134,6 +142,51 @@ const styles = {
     backgroundImage: 'linear-gradient(to right, #ee0000, #ee0000 11.5px, #f60000 11.5px, #f60000 )',
     backgroundSize: '23px 100%',
     height:'10%'
+  },
+  nav:{
+    textAlign:'left',
+    marginLeft:'2%',
+    marginRight:'80%',
+    marginTop:'1%',
+  },
+  link:{
+    color:'white',
+    textDecoration:'none'
+  },
+  list:{
+    fontSize:24
+  },
+  form:{
+    display:'flex',
+    flexDirection:'column',
+    justifyContent:'space-evenly',
+    backgroundColor:'rgba(0,0,0,0.25',
+    borderRadius:'20px',
+    color:'white',
+    width:'800px',
+    height:'300px'
+  },
+  inputs:{
+    marginLeft:'33%',
+    marginRight:'33%',
+    width:'33%',
+    borderRadius:'20px',
+    backgroundColor:'rgba(0,0,0,0.5',
+    fontSize:18,
+    color:'yellow',
+    textAlign:'center'
+  },
+  button:{
+    width:'33%',
+    marginRight:'33%',
+    marginLeft:'33%'
+  },
+  entryContainer:{
+    display:'flex',
+    flexDirection:'column'
   }
+
+
+
 }
 
