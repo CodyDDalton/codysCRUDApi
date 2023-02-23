@@ -37,7 +37,7 @@ router.get('/', protectedRoute, async (req, res) => {
 })
 
 //GET ONE
-router.get('/:id', getMovie, (req, res) => {
+router.get('/:id', getMovie, protectedRoute, (req, res) => {
     res.json(res.movie)
     
 })
