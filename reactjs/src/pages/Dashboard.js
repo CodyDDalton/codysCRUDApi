@@ -30,9 +30,9 @@ function Dashboard() {
         response => {
           setMovies(response.data)
         },
-        (error) => {
+        error => {
           console.error("Secure page error", error.response)
-          if(error.response && error.response.status == 403) {
+          if(error.response && error.response.status === 403) {
             AuthService.logout();
             navigate('/login')
           }
@@ -46,7 +46,7 @@ function Dashboard() {
       // return () => {
       //   ignore = true;
   
-    , [])
+    )
 
     const getMovies = async (res, req) =>{
       setLoading(true)
