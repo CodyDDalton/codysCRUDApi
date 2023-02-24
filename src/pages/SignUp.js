@@ -15,7 +15,7 @@ function SignUp() {
     try {
       await AuthService.signup(email, password).then(
         response => {
-          navigate("/dashboard")
+          navigate("/login")
         },
         error => {
           console.error(error)
