@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import AuthService from '../services/auth.service';
@@ -38,14 +37,6 @@ function Dashboard() {
           }
         }
       )}
-
-      // if(!ignore){
-      //   getMovies()
-      // }
-
-      // return () => {
-      //   ignore = true;
-  
     )
 
     const getMovies = async (res, req) =>{
@@ -119,19 +110,19 @@ function Dashboard() {
         </ul>
         <form style={styles.form} onSubmit={(event) => handleSubmit(event)}>
           <div style={styles.entryContainer}>
-            <label for='title'>
+            <label for="title">
                 Title:</label>
                 <input id='title' style={styles.inputs} type="text" name="title" value={values.title} onChange={handleInputChange} />
             
           </div>
             <div style={styles.entryContainer}>
-              <label for='genre'>
+              <label for="genre">
                 Genre:</label>
                 <input id='genre' style={styles.inputs} type="text" name="genre" value={values.genre} onChange={handleInputChange} />
               
             </div>
             <div style={styles.entryContainer}>
-              <label for='released'>
+              <label for="released">
                 Released:</label>
                 <input id='released' style={styles.inputs} type="text" name="released" value={values.released} onChange={handleInputChange} />
               
