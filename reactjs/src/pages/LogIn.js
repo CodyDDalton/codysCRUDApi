@@ -15,6 +15,7 @@ function LogIn() {
         try {
             await AuthService.login(email, password).then(
                 response => {
+                  alert('Login successful. Welcome back to Movie Lister!')
                   navigate("/dashboard")
                 },
                 error => {
@@ -30,31 +31,36 @@ function LogIn() {
 
   return (
     <div className="App">
+    <Link id="Link" to="/" style={{textDecoration:'none', color:'yellow', fontSize:20}}>Home</Link>
       <header className="App-header" style={styles.header}>
       <div>
-        <h1>Log In Screen</h1>
+        
       </div>
       <section>
-        <form onSubmit={handleLogin}>
-          <input
+        <form style={styles.loginForm} onSubmit={handleLogin}>
+          <label for="emailInput" style={{color:'yellow'}}>Email:</label>
+          <input style={styles.inputs}
+            id="emailInput"
             type="text"
             placeholder="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             />
-            <input
+            <label for="passInput" style={{color:'yellow'}}>Password:</label>
+            <input style={styles.inputs}
+            id="passInput"
             type="password"
             placeholder="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             />
-            <button type="submit">Log In</button>
-        </form>
+            <button style={styles.loginBut} type="submit">Log In</button>
+            </form>
       </section>
         <nav style={styles.nav}>
           <div style={styles.links}>
-          <Link id="Link" to="/" style={{textDecoration:'none', color:'yellow'}}>Home</Link>
-          <Link to="/dashboard" style={{textDecoration:'none', color:'yellow'}}>Dashboard</Link>
+          
+          {/* <Link to="/dashboard" style={{textDecoration:'none', color:'yellow'}}>Dashboard</Link> */}
 
           </div>
         </nav>
@@ -80,6 +86,29 @@ const styles = {
     display:'flex',
     flexDirection:'column',
     justifyContent:'space-evenly',
+  },
+  loginForm:{
+    display:'flex',
+    flexDirection:'column',
+    justifyContent:'space-evenly',
+    width:'150%',
+    marginLeft:'-15%',
+    marginTop:'-20%'
+    
+  },
+  inputs:{
+    padding:'2%',
+    fontSize:18,
+    textAlign:'center',
+    borderRadius:'20px',
+    margin:'2%' 
+  },
+  loginBut:{
+    fontSize:18,
+    padding:'2%',
+    textAlign:'center',
+    borderRadius:'20px',
+    margin:'2%'
   }
 
 }

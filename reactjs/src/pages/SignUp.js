@@ -15,6 +15,7 @@ function SignUp() {
     try {
       await AuthService.signup(email, password).then(
         response => {
+          alert("You're all signed up! Try logging in with your new account information below.")
           navigate("/login")
         },
         error => {
@@ -29,31 +30,35 @@ function SignUp() {
 
   return (
     <div className="App">
+    <Link id="Link" to="/" style={{textDecoration:'none', color:'yellow'}}>Home</Link>
       <header className="App-header" style={styles.header}>
       <div>
-        <h1>Sign Up Screen</h1>
       </div>
       <section>
-        <form onSubmit={handleSignup}>
-          <input
+        <form style={styles.signForm} onSubmit={handleSignup}>
+          <label for="emailInput" style={{ color:'yellow' }}>Email:</label>
+          <input style={styles.inputs}
+            id="emailInput"
             type="text"
             placeholder="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             />
-            <input
+            <label for="passInput" style={{color:'yellow'}}>Password:</label>
+            <input style={styles.inputs}
+            id="passInput"
             type="password"
             placeholder="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             />
-            <button type="submit">Sign Up</button>
+            <button style={styles.signupBut} type="submit">Sign Up</button>
         </form>
       </section>
         <nav style={styles.nav}>
           <div style={styles.links}>
-          <Link id="Link" to="/" style={{textDecoration:'none', color:'yellow'}}>Home</Link>
-          <Link to="/dashboard" style={{textDecoration:'none', color:'yellow'}}>Dashboard</Link>
+          
+          
 
           </div>
         </nav>
@@ -80,6 +85,29 @@ const styles = {
     display:'flex',
     flexDirection:'column',
     justifyContent:'space-evenly',
+  },
+  signForm:{
+    display:'flex',
+    flexDirection:'column',
+    justifyContent:'space-evenly',
+    width:'150%',
+    marginLeft:'-15%',
+    marginTop:'-20%'
+    
+  },
+  inputs:{
+    padding:'2%',
+    fontSize:18,
+    textAlign:'center',
+    borderRadius:'20px',
+    margin:'2%' 
+  },
+  signupBut:{
+    fontSize:18,
+    padding:'2%',
+    textAlign:'center',
+    borderRadius:'20px',
+    margin:'2%'
   }
 
 }

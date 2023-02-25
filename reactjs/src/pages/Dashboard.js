@@ -92,47 +92,49 @@ function Dashboard() {
 
   return (
     <div className="App">
+    <Link style={styles.link} to="/">Home</Link>
       <header className="App-header" style={styles.header}>
         <nav style={styles.nav}>
-          <Link style={styles.link} to="/">Return to Home</Link>
+          
         </nav>
-        <div>
-        <h1>Movies</h1>
-        
-        <ul style={{listStyle:'none'}}>
-        {
-          movies.map(movie => (
-             <li style={styles.list}>
-              <Link style={{textDecoration:'none', color:'yellow'}} to={`/movie/${movie._id}`}>{movie.title}</Link>
-            </li>
-          ))
-        }
-        </ul>
-        <form style={styles.form} onSubmit={(event) => handleSubmit(event)}>
-          <div style={styles.entryContainer}>
-            <label for="title">
-                Title:</label>
-                <input id='title' style={styles.inputs} type="text" name="title" value={values.title} onChange={handleInputChange} />
-            
-          </div>
-            <div style={styles.entryContainer}>
-              <label for="genre">
-                Genre:</label>
-                <input id='genre' style={styles.inputs} type="text" name="genre" value={values.genre} onChange={handleInputChange} />
-              
-            </div>
-            <div style={styles.entryContainer}>
-              <label for="released">
-                Released:</label>
-                <input id='released' style={styles.inputs} type="text" name="released" value={values.released} onChange={handleInputChange} />
-              
-
+        <div style={styles.dashboard}>
+          <div style={styles.archive}>
+          <h1>List of Movies</h1>
+          
+          <ul style={{listStyle:'none'}}>
+          {
+            movies.map(movie => (
+              <li style={styles.list}>
+                <Link style={{textDecoration:'none', color:'yellow'}} to={`/movie/${movie._id}`}>{movie.title}</Link>
+              </li>
+            ))
+          }
+          </ul>
             </div>
             
-            <input style={styles.button} type="submit" value="Submit" />
-        </form>
+            <form style={styles.form} onSubmit={(event) => handleSubmit(event)}>
+            <h1>Add a new Title <br></br> to the Archives!</h1>
+              <div style={styles.entryContainer}>
+                <label for="title">
+                    Title:</label>
+                    <input id='title' style={styles.inputs} type="text" name="title" value={values.title} onChange={handleInputChange} />
+                
+              </div>
+                <div style={styles.entryContainer}>
+                  <label for="genre">
+                    Genre:</label>
+                    <input id='genre' style={styles.inputs} type="text" name="genre" value={values.genre} onChange={handleInputChange} />
+                  
+                </div>
+                <div style={styles.entryContainer}>
+                  <label for="released">
+                    Released:</label>
+                    <input id='released' style={styles.inputs} type="text" name="released" value={values.released} onChange={handleInputChange} />
+                </div>
+                
+                <input style={styles.button} type="submit" value="Submit" />
+            </form>
         </div>
-        
       </header>
     </div>
   );
@@ -159,15 +161,16 @@ const styles = {
     textDecoration:'none'
   },
   list:{
-    fontSize:24
+    fontSize:24,
+    
   },
   form:{
     display:'flex',
     flexDirection:'column',
-    justifyContent:'space-evenly',
-    backgroundColor:'rgba(0,0,0,0.25',
+    justifyContent:'space-between',
+    // backgroundColor:'rgba(0,0,0,0.25',
     borderRadius:'20px',
-    color:'white',
+    
     width:'800px',
     height:'300px'
   },
@@ -176,19 +179,32 @@ const styles = {
     marginRight:'33%',
     width:'33%',
     borderRadius:'20px',
-    backgroundColor:'rgba(0,0,0,0.5',
     fontSize:18,
-    color:'yellow',
+    // color:'yellow',
     textAlign:'center'
   },
   button:{
     width:'33%',
     marginRight:'33%',
-    marginLeft:'33%'
+    marginLeft:'33%',
+    fontSize:18,
+    padding:'2%',
+    textAlign:'center',
+    borderRadius:'20px',
+    marginTop:'2%'
+
   },
   entryContainer:{
     display:'flex',
     flexDirection:'column'
+  },
+  dashboard:{
+    display:'flex',
+    flexDirection:'row',
+    marginTop:'-10%'
+  },
+  archive:{
+    marginLeft:'10%'
   }
 
 

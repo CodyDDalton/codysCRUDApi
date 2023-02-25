@@ -23,11 +23,13 @@ function App() {
 
     return(
         <div>
-            <div>
+            <div style={styles.logScreen}>
                 {
-                    currentUser === false
-                    ? <h2>Logged In</h2>
-                    : <h2>Logged Out</h2>}
+                    currentUser === true
+                    ? <h3>Logged In</h3>
+                    : <h3>Logged Out</h3>
+                }
+                <h3>Welcome to Movie Lister!</h3>
             </div>
             <section>
                 <Routes>
@@ -38,9 +40,28 @@ function App() {
                     <Route path="/" exact element={<Home />} />
                 </Routes>
             </section>
+            <div style={styles.footer}>
+                <h5>©2023 Movie Lister</h5>
+            </div>
         </div>
 
     )
 }
 
 export default App;
+
+const styles = {
+    logScreen:{
+        // marginLeft:'2%',
+        // fontSize:12,
+        display:'flex',
+        flexDirection:'row',
+        justifyContent:'space-evenly',
+        marginLeft:'0%',
+        marginRight:'25%'
+    },
+    footer:{
+        textAlign:'center',
+        fontSize:12
+    }
+}

@@ -7,14 +7,12 @@ function Home() {
     <div className="App">
       <header className="App-header" style={styles.header}>
       <div>
-        <h1>Welcome to Movie Lister!</h1>
+        
       </div>
         <nav style={styles.nav}>
           <div style={styles.links}>
-          <Link id="Link" to="/" style={{textDecoration:'none', color:'yellow'}}>Home</Link>
-          <Link to="/dashboard" style={{textDecoration:'none', color:'yellow'}}>Dashboard</Link>
-          <Link to="/login" style={{textDecoration:'none', color:'yellow'}}>Log In</Link>
-          <Link to="/signup" style={{textDecoration:'none', color:'yellow'}}>Sign Up</Link>
+          <Link to="/login" style={{textDecoration:'none', color:'yellow', marginBottom:'25%'}}>Log In</Link>
+          <Link to="/signup" style={{textDecoration:'none', color:'yellow',}}>Sign Up</Link>
           </div>
         </nav>
       </header>
@@ -34,11 +32,17 @@ const styles = {
   },
   nav:{
     fontSize:34,
+    marginLeft:'-14%'
   },
   links:{
     display:'flex',
     flexDirection:'column',
     justifyContent:'space-evenly',
+    backgroundColor:'rgba(0,0,0,0.25)',
+    padding:'80%',
+    width:'100%',
+    borderRadius:'20px',
+
   }
 
 }
